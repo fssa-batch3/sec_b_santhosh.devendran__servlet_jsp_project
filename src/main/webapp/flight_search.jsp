@@ -9,27 +9,33 @@
 <style>
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-   
-    height: 100vh;
+     margin: 0;
+     padding: 0;
+     height: 90vh;
+     background-image: url('https://res.cloudinary.com/dvb2bkrx9/image/upload/v1694029371/tdka6gsnw4zaxfl7iryn.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-h2 {
+h3 {
     text-align: center;
-    color: #333;
+    color: black;
     margin-bottom: 20px;
 }
-
-form {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 300px;
-    margin: 0 auto;
-}
+ form {
+  background-color: rgba(255, 255, 255, 0.5);
+        
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px; 
+            margin: auto;
+            margin-top: 13%;
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+        }
 
 label {
     font-weight: bold;
@@ -56,6 +62,7 @@ button[type="submit"] {
     color: #fff;
     border: none;
     border-radius: 5px;
+   margin-top: 25px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -68,7 +75,8 @@ button[type="submit"]:hover {
 </head>
 <body>
 <jsp:include page="header.jsp" />
-	<h2>Enter Source and Destination</h2>
+
+	<h3>Discover Your Wings</h3>
 	<form action="result" method="post">
 		<div>
     <label for="source">Source:</label>

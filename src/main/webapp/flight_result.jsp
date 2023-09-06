@@ -12,6 +12,8 @@
     <meta charset="ISO-8859-1">
     <title>Flight Booking</title>
     <style>
+    
+    
         table {
             border-collapse: collapse;
             width: 80%;
@@ -46,9 +48,9 @@
    String src=(String)request.getAttribute("src");
    String des=(String)request.getAttribute("des");
    String dateStr = (String) request.getAttribute("date");
-  // int userId=Integer.parseInt((String)request.getAttribute("userId"));
+  
   int userId = (Integer) request.getSession().getAttribute("userId");
-//   int userId = (Integer) request.getSession().getAttribute("userId");
+
        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd");
        LocalDate date = LocalDate.parse(dateStr, formatter);
    

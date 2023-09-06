@@ -7,16 +7,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-image: url(./image/login.jpg);
+   			background-position: center;
+    		background-repeat: no-repeat;
+    		background-size: cover;
         }
         .container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.5); 
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             padding: 20px;
@@ -62,7 +65,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="user/login" method="post">
+        <form action="login" method="post">
             <div class="form-group">
                 <label for="phone">Phone:</label>
                 <input type="text" id="phone" name="phone_number" required>
@@ -74,7 +77,7 @@
             <button type="submit" class="btn-login">Login</button>
         </form>
         
-        <a href="new"><button  class="btn-login">register</button></a>
+        <a href="user/new"><p style="text-align: center;">Create new account</p></a>
         
         <a href="/aviease-web/admin/list_all_user" ><button class="btn-login">admin</button></a>
     </div>

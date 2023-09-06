@@ -9,30 +9,33 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Confirm Ticket Booking</title>
-    <style>
-        body {
+    <style> 
+    
+    body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-           
             height: 100vh;
+            background-image: url('https://res.cloudinary.com/dvb2bkrx9/image/upload/v1694030361/sclpaeoxcjxmvjygnuqk.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .container1 {
-        
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.3);
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             padding: 20px;
             width: 400px;
-            margin: 0 auto;
-            margin-top: 10rem;
+            margin: auto;
+            margin-top: 13%;
         }
 
         h2 {
             text-align: center;
             color: #333;
+            margin-top: 0; /* Remove margin from the top of the heading */
         }
 
         .user-info,
@@ -49,24 +52,40 @@
             margin-top: 5px;
         }
 
-        .flight-info .statusp {
-            color: orange; 
+        .status {
+            color: orange;
         }
-        
-        input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
 
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            display: block; 
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
         
+        .container1 {
+            text-align: center; 
+        }
+
+        .user-info, .flight-info {
+            border-top: 1px solid #ccc; 
+            padding-top: 15px; 
+        }
+
+        .flight-info .info {
+            margin-top: 10px; 
+        }
     </style>
 </head>
 <body>
@@ -99,20 +118,20 @@ LocalDate localDate = LocalDate.parse(dateString);
         <div class="user-info">
             <div class="label">passenger details:</div>
             <div class="info">
-                <div>name: <%=user.getFirstname()+" "+user.getLastname() %></div>
-                <div>Email: <%=user.getEmail() %></div>
+                <div>Name : <%=" "+user.getFirstname()+" "+user.getLastname() %></div>
+                <div>Email: <%=" "+user.getEmail() %></div>
                 <div>Phone Number: <%="+91 "+user.getMobileNo()%></div>
             </div>
         </div>
         <div class="flight-info">
             <div class="label">Flight details:</div>
             <div class="info">
-                <div>Source: <%=flight.getSrc() %></div>
-                <div>Destination: <%=flight.getDestination() %></div>
-                <div>Airline: <%=flight.getAirlineCode() %></div>
-                <div>Flight Number: <%=flight.getFlightNo() %></div>
-                <div>date: <%=localDate %></div>
-                <div>Price: <%="RS :"+flight.getPrice() %></div>
+                <div>Source: <%=" "+flight.getSrc() %></div>
+                <div>Destination: <%=" "+flight.getDestination() %></div>
+                <div>Airline: <%=" "+flight.getAirlineCode() %></div>
+                <div>Flight Number: <%=" "+flight.getFlightNo() %></div>
+                <div>date: <%=" "+localDate %></div>
+                <div>Price: <%="RS : "+flight.getPrice() %></div>
                 <div class="statusp">Status: pending</div>
             </div>
         </div>

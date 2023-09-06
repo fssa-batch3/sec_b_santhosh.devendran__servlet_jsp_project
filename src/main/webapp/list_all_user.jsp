@@ -103,10 +103,27 @@ tr:hover {
 padding: 40px;
 
 }
-       
+    
+     .back-button {
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: #000;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #999;
+        }   
     </style>
 </head>
 <body>
+
+<a href="/aviease-web/user_login.jsp" class="back-button">Back</a>
 
 <div class="create_div">
 <a href="/aviease-web/admin/airline/list">
