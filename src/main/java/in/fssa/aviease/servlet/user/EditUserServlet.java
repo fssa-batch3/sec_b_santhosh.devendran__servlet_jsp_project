@@ -15,7 +15,7 @@ import in.fssa.aviease.service.UserService;
 /**
  * Servlet implementation class EditUserServlet
  */
-@WebServlet("/user/edit")
+@WebServlet("/admin/user/edit")
 public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -15,7 +15,7 @@ import in.fssa.aviease.service.UserService;
 /**
  * Servlet implementation class UpdateUserServlet
  */
-@WebServlet("/user/update")
+@WebServlet("/admin/user/update")
 public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +51,7 @@ public class UpdateUserServlet extends HttpServlet {
 	       try {
 	    	  
 			us.updateUser(idInt, user);
-			response.sendRedirect(request.getContextPath()+"/list_all_user");
+			response.sendRedirect(request.getContextPath()+"/admin/list_all_user");
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			throw new ServletException(e.getMessage());

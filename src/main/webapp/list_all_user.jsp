@@ -101,15 +101,20 @@ tr:hover {
 
 .create_div{
 padding: 40px;
+
 }
        
     </style>
 </head>
 <body>
 
-<div class="ceate_div">
-<a href="user/new">
-    <button class="create" type="button">Create New User</button>
+<div class="create_div">
+<a href="/aviease-web/admin/airline/list">
+    <button class="create" type="button">list all airliner</button>
+</a>
+
+<a href="/aviease-web/admin/flight/list">
+    <button class="create" type="button">list all flight</button>
 </a>
 </div>
 
@@ -145,7 +150,7 @@ padding: 40px;
             <td><%=user.getLastname() %></td>
             <td><%=user.getMobileNo() %></td>
             <td><%=user.getEmail() %></td>
-            <td><a href="user/edit?id=<%= user.getId()%>">
+            <td><a href="/aviease-web/admin/user/edit?id=<%= user.getId()%>">
    			 <button class="update" type="button">update User</button>
 			</a></td>
         </tr>

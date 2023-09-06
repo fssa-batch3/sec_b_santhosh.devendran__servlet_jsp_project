@@ -52,7 +52,7 @@ public class CreateUserServlet extends HttpServlet {
        try {
     	  
 		us.createUser(user);
-		response.sendRedirect(request.getContextPath()+"/list_all_user");
+		response.sendRedirect(request.getContextPath()+"/user/login");
 	} catch (ServiceException e) {
 		e.printStackTrace();
 		throw new ServletException(e.getMessage());

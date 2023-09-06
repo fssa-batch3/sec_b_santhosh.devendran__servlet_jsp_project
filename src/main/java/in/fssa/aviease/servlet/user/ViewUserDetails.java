@@ -1,8 +1,6 @@
 package in.fssa.aviease.servlet.user;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ListAllUser
+ * Servlet implementation class ViewUserDetails
  */
-@WebServlet("/list_all_user")
-public class ListAllUserServlet extends HttpServlet {
+@WebServlet("/ViewUserDetails")
+public class ViewUserDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListAllUserServlet() {
+    public ViewUserDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +26,8 @@ public class ListAllUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/list_all_user.jsp");
-		rd.forward(request, response);
-		
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
