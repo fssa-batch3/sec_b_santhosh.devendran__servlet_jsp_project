@@ -44,7 +44,7 @@ public class EditUserServlet extends HttpServlet {
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ServletException(e.getMessage());
 			
 		}
 		

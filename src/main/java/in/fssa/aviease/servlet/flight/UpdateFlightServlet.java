@@ -52,7 +52,7 @@ public class UpdateFlightServlet extends HttpServlet {
 		        LocalTime localTime = LocalTime.parse(flightTimeStr, formatter);
 		        Time sqlTime = Time.valueOf(localTime);
 
-		       flight.setId(id);
+		        flight.setId(id);
 			    flight.setSrc(src);
 			    flight.setDestination(destination);
 			    flight.setAirlineCode(airlineCode);

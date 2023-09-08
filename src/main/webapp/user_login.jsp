@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url(./image/login.jpg);
+            background-image: url('https://res.cloudinary.com/dvb2bkrx9/image/upload/v1694057317/udnt4kzykpl8ehnx3vxa.jpg');
    			background-position: center;
     		background-repeat: no-repeat;
     		background-size: cover;
@@ -65,14 +65,14 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="login" method="post">
+        <form action="/aviease-web/user/login" method="post">
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone_number" required>
+                <input type="text" id="phone" value="8765432877" name="phone_number" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" value="Mathi@1234" name="password" required>
             </div>
             <button type="submit" class="btn-login">Login</button>
         </form>

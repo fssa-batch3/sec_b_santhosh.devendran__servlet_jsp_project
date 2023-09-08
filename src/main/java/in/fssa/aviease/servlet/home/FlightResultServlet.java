@@ -40,12 +40,12 @@ public class FlightResultServlet extends HttpServlet {
 	        	 String source = request.getParameter("source");
 	 	        String destination = request.getParameter("destination");
 	 	       String date = request.getParameter("date");
-	 	    //  int userId = (Integer) request.getSession().getAttribute("userId");
+	 	    
 	 	      
 				request.setAttribute("src", source);
 				request.setAttribute("des", destination);
 				request.setAttribute("date", date);
-			//	request.setAttribute("userId", userId);
+			
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/flight_result.jsp");
 				rd.forward(request, response);
