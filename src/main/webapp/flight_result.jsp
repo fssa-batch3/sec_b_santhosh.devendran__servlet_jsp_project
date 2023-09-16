@@ -48,10 +48,11 @@ button:hover {
 	<%
 	String src = (String) request.getAttribute("src");
 	String des = (String) request.getAttribute("des");
-	String dateStr = (String) request.getAttribute("date");
+	
 
 	int userId = (Integer) request.getSession().getAttribute("userId");
 
+	String dateStr = (String) request.getSession().getAttribute("date");
 	java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	LocalDate date = LocalDate.parse(dateStr, formatter);
 

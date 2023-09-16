@@ -29,5 +29,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/software/Eclipse_IDE_workspace/aviease-web/src/main/webapp/WEB-INF/lib/gson-2.8.9.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

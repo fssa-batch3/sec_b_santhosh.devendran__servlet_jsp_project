@@ -68,16 +68,16 @@
         <form action="/aviease-web/user/login" method="post">
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" value="8765432877" name="phone_number" required>
+                <input type="text" id="phone" value="8765432877" pattern="[7-9]{1}[0-9]{9}"  name="phone_number" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" value="Mathi@1234" name="password" required>
+                <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="Mathi@1234" name="password" required>
             </div>
             <button type="submit" class="btn-login">Login</button>
         </form>
         
-        <a href="user/new"><p style="text-align: center;">Create new account</p></a>
+        <a href="new"><p style="text-align: center;">Create new account</p></a>
         
         <a href="/aviease-web/admin/list_all_user" ><button class="btn-login">admin</button></a>
     </div>

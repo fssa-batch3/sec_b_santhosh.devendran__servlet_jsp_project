@@ -30,7 +30,7 @@ public class NewUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	
-		RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/register.jsp");
 		rd.forward(request, response);
 	}
 

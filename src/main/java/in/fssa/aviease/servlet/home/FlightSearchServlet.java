@@ -28,7 +28,7 @@ public class FlightSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/flight_search.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/home.jsp");
         rd.forward(request, response);  
 	}
 
