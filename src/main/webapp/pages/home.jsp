@@ -8,7 +8,7 @@
 <head>
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aviease</title>
 
     <link rel="stylesheet" href="../assets/header.css">
     <link rel="stylesheet" href="../assets/home.css">
@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
 
+ <link rel="stylesheet" href="../assets/error.css">
 
 </head>
 <body>
@@ -33,7 +34,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light   header">
             <div class="container h1 tw">
-                <a class="navbar-brand " href="#"><span class="avil">Avi</span>ease</a>
+                <a class="navbar-brand " href="search"><span class="avil">Avi</span>ease</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -42,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item active m-3">
-                            <a class="nav-link  h4" href="#">Home</a>
+                            <a class="nav-link  h4" href="search">Home</a>
                         </li>
                         <li class="nav-item h4 m-3">
                             <a class="nav-link" href="#about">About</a>
@@ -50,9 +51,15 @@
                         <li class="nav-item h4 m-3">
                             <a class="nav-link" href="#deals">Deals</a>
                         </li>
-                        <li class="nav-item h4 m-3">
-                            <a class="nav-link" href="#">Profile</a>
+           
+                         <li class="nav-item h4 m-3 dropdown">
+                            <a class="nav-link" >My Account</a>
+                            <div class="dropdown-content">
+                                <a href="<%=request.getContextPath() %>/profile/view"> <p>Profile</p></a>
+                                <a href="<%=request.getContextPath() %>/ticket/list"><p>My Bookings</p></a>
+                                </div>
                         </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -60,7 +67,7 @@
 
 
         <div class="heading">
-            <h2> book to fly</h2>
+            <h2> Book to fly</h2>
         </div>
 
         <div class="serd">
@@ -126,15 +133,21 @@
                     
                     <span id="sourceError" class="error"></span>
                 </div>
+                
+                <div class="swap">
+                <img class="" src="https://iili.io/JJ1dOoQ.md.png" id="locationSwap" width="30px" heigth="30px">
+                
+                </div>
                 <div class="ind">
 
                     <label for="source">destination:</label>
                     <select id="destination" name="destination" required>
-                        <option value="Chennai">Chennai</option>
+                        
                         <option value="Coimbatore">Coimbatore</option>
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Vijayawada">Vijayawada</option>
                         <option value="Jaipur">Jaipur</option>
+                        <option value="Chennai">Chennai</option>
                         <option value="Udaipur">Udaipur</option>
                         <option value="Kolkata">Kolkata</option>
                         <option value="Patna">Patna</option>
@@ -186,7 +199,7 @@
                 </div>
                 <div class="ind">
                     <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
+                    <input type="date" id="date" value="<%=LocalDate.now() %>" min="<%=LocalDate.now() %>" name="date" required>
                      <span id="dateError" style="color:red;" class="error"></span>
 
                 </div>
@@ -228,9 +241,9 @@
 
             <div class="ftg">
 
-                <div class="ftgd"><p class="text-center" ><b>Chennai</b></p></div>
+                <div class="ftgd"><p class="text-center" id="srcName"></p></div>
                 <div class="ftgd"><img src="https://res.cloudinary.com/dvb2bkrx9/image/upload/v1694696643/grzigo0qnyuf70aatt7t.gif" style="height: 10vh;" alt=""></div>
-                <div class="ftgd"><p class="text-center" ><b>Trichy</b></p></div>
+                <div class="ftgd"><p class="text-center" id="desName"></p></div>
 
             </div>
             
@@ -276,7 +289,7 @@
 
         <div class="mt-5 ccd">
 
-            <h3 >Choose corect deel for you....</h3>
+            <h3 >Choose correct deal for you....</h3>
 
         </div>
 
@@ -284,7 +297,7 @@
             <div class="row">
                 <div> <img src="https://www.treebo.com/blog/wp-content/uploads/2018/07/Webp.net-compress-image-23-2.jpg" alt=""> <span>Chennai </span></div>
                 <div><img src="https://static.toiimg.com/img/91247935/Master.jpg" alt=""> <span>Kerala</span></div>
-                <div> <img src="https://bl-i.thgim.com/public/incoming/k1ogd6/article66507008.ece/alternates/FREE_1200/24hyngg_%20Secretariat%20building%2002.jpg" alt=""> <span>Hyderaabad</span></div>
+                <div> <img src="https://bl-i.thgim.com/public/incoming/k1ogd6/article66507008.ece/alternates/FREE_1200/24hyngg_%20Secretariat%20building%2002.jpg" alt=""> <span>Hyderabad</span></div>
             </div>
 
             <div class="row">
@@ -336,8 +349,67 @@
        
       </footer>
       
+    	
+    	 <div class="error-message" id="error-message">
+  
+   </div>
+      
+   
+   <script type="text/javascript">
+
+function showError(message, duration) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.innerHTML = message;
+    errorMessage.classList.add('show');
+
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+        errorMessage.classList.add('hide');
+
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+            errorMessage.classList.remove('hide');
+        }, 500); 
+    }, duration);
+}
+
+
+</script>
+	<div class="error-message" id="error-message"></div>
+
+	<%
+	String message = (String) request.getAttribute("errorMessage");
+	if (message != null) {
+		request.removeAttribute("errorMessage");
+
+	%>
+	<script>
+        showError("<%=message%>", 2000);
+        s
+	</script>
+	<%
+	}
+	%>
       
       <script>  
+      
+      <!-- restrict go back -->
+      
+      window.history.pushState(null, null, document.URL);
+      window.addEventListener('popstate', function () {
+        window.history.pushState(null, null, document.URL);
+      });
+
+      document.getElementById("date").addEventListener("change",function (){
+    	  
+    	  document.getElementById("flightResult").classList.add("d-none");
+    	  document.getElementById("flightLoading").classList.add("d-none");
+          document.getElementById("noFlightFound").classList.add("d-none");
+          
+          getFlights();
+      });
+      
+      
       document.getElementById("flightResult").classList.add("d-none");
       document.getElementById("flightLoading").classList.add("d-none");
       document.getElementById("noFlightFound").classList.add("d-none");
@@ -394,6 +466,8 @@
                 		        parentDiv.removeChild(parentDiv.firstChild);
                 		    }
         
+                		    document.getElementById("srcName").innerHTML=src;
+                		    document.getElementById("desName").innerHTML=des;
                   
                   for (const flight of flightDetails){
                 	  createFlightList(flight);
@@ -514,6 +588,18 @@
     	    cdeDiv3.appendChild(pricenameDiv);
     	    cdeDiv3.appendChild(priceValueDiv);
     	    
+    	   
+    	    
+    	    
+    	    // Create and add the seat count
+    	    const seatCountValueDiv = document.createElement("div");
+    	    seatCountValueDiv.className = "half";
+    	    const seatCountImage = document.createElement("img");
+    	    seatCountImage.src = "https://iili.io/JH5AIig.md.png";
+    	    seatCountImage.style = "padding-right: 5px; margin-top: -15px;height:20px;";
+    	    const seatCountValueP = document.createElement("p");
+    	    
+    	
 
     	    // Create the fourth 'cde' div
     	    const cdeDiv4 = document.createElement("div");
@@ -548,6 +634,8 @@
     	            	 
     	                  const ticketsDetails = (await response.json()).data;
     	                  
+    	                
+    	                  seatCountValueP.textContent = flight.noOfSeats-ticketsDetails;
     	                  console.log(ticketsDetails);
     	                
     	                 
@@ -559,25 +647,23 @@
     	          }
     	      }
     	    
-    	    
-    	    // Create and add the seat count
-    	    const seatCountValueDiv = document.createElement("div");
-    	    seatCountValueDiv.className = "half";
-    	    const seatCountImage = document.createElement("img");
-    	    seatCountImage.src = "https://iili.io/JH5AIig.md.png";
-    	    seatCountImage.style = "padding-right: 5px; margin-top: -15px;height:20px;";
-    	    const seatCountValueP = document.createElement("p");
-    	    seatCountValueP.textContent = flight.noOfSeats;
+    	   
     	    seatCountValueDiv.appendChild(seatCountImage);
     	    seatCountValueDiv.appendChild(seatCountValueP);
 
     	    // Create and add the "Book now" button
     	    const bookNowDiv = document.createElement("div");
     	    bookNowDiv.className = "half";
+    	    
+    	    const booknowa = document.createElement("a");
+    	    booknowa.setAttribute("href","booking/new?flightId="+flight.id+"&date="+date.value);
+    	    bookNowDiv.appendChild(booknowa);
+    	    
     	    const bookButton = document.createElement("button");
     	    bookButton.className = "book-bn";
+    	    bookButton.style.width="130%";
     	    bookButton.textContent = "Book now";
-    	    bookNowDiv.appendChild(bookButton);
+    	    booknowa.appendChild(bookButton);
 
     	    cdeDiv4.appendChild(seatCountValueDiv);
     	    cdeDiv4.appendChild(bookNowDiv);
@@ -591,7 +677,74 @@
     	    // Append the flight card to the flightResult element
     	    document.getElementById("flightResultdiv").appendChild(rcardDiv);
     	}
+    	
+    	
+    	// hide the option which selected
+    	
+    	document.getElementById("source").addEventListener("change", function() {
+    let value1 = document.getElementById("source").value;
+    let selectElement = document.getElementById('destination');
+    
+    if(value1 === selectElement.value){
+    selectElement.value="";
+    }
+    for (let i = 0; i < selectElement.options.length; i++) {
+      let option = selectElement.options[i];
+      
+      if (option.value === value1) {
+        option.style.display = 'none';
+      } else {
+        option.style.display = 'block'; 
+      }
+    }
+  });
+    	
+    	// swap location
+    	document.getElementById("locationSwap").addEventListener("click", function() {
+    		console.log("swap");
+    		 let value1 = document.getElementById("source").value;
+    		 let value2 = document.getElementById("destination").value;
+    		 
+    		 document.getElementById("source").value=value2;
+    		 document.getElementById("destination").value=value1;
+    		 
+    		 document.getElementById("flightResult").classList.add("d-none");
+       	  document.getElementById("flightLoading").classList.add("d-none");
+             document.getElementById("noFlightFound").classList.add("d-none");
+    	})
+    	
+    	//show hide swap
+    	
+    	document.getElementById("source").addEventListener("change", function() {
+    		
+    		 let value1 = document.getElementById("source").value;
+    		 let value2 = document.getElementById("destination").value;
+    		 
+    		 if(value1 === value2 || value2 === ""){
+    			 document.getElementById("locationSwap").classList.add("deactivate");
+    		 }else{
+    			 document.getElementById("locationSwap").classList.remove("deactivate");
+    		 }
+    		 
+    		 
+    		
+    	})
+    	
+    	document.getElementById("destination").addEventListener("change", function() {
+    		
+    		 let value1 = document.getElementById("source").value;
+    		 let value2 = document.getElementById("destination").value;
+    		 
+    		 if(value1 === value2 || value2 === ""){
+    			 document.getElementById("locationSwap").classList.add("deactivate");
+    		 }else{
+    			 document.getElementById("locationSwap").classList.remove("deactivate");
+    		 }
+    	})
+    	
+    	
       </script>
+      
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

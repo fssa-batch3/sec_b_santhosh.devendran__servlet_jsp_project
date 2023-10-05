@@ -1,16 +1,19 @@
 package in.fssa.aviease.servlet.user;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.fssa.aviease.exception.ServiceException;
 import in.fssa.aviease.exception.ValidationException;
 import in.fssa.aviease.model.User;
 import in.fssa.aviease.service.UserService;
+import in.fssa.aviease.util.PasswordUtil;
+import in.fssa.aviease.validator.UserValidator;
 
 /**
  * Servlet implementation class CreateUserServlet
@@ -52,14 +55,17 @@ public class CreateUserServlet extends HttpServlet {
        try {
     	  
 		us.createUser(user);
-		response.sendRedirect(request.getContextPath()+"/user/login");
-	} catch (ServiceException e) {
+		String message="Thank you for filling out your information! ...";
+		request.setAttribute("sucessMessage", message);
+		System.out.println(message);
+		response.sendRedirect(request.getContextPath()+"/pages/index.jsp");
+		
+	} catch (Exception e) {
 		e.printStackTrace();
-		throw new ServletException(e.getMessage());
-	} catch (ValidationException e) {
-		e.printStackTrace();
-		throw new ServletException(e.getMessage());
-	}
+		request.setAttribute("errorMessage", e.getMessage());
+        RequestDispatcher rd = request.getRequestDispatcher("/pages/register.jsp");
+		rd.forward(request, response);
+	} 
 
        
 	}

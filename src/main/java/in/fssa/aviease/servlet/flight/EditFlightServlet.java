@@ -34,14 +34,14 @@ public class EditFlightServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");		
+		
 
 		try {
-			
-			Flight flightDetails =new FlightService().findByFlightId(Integer.parseInt(id));
-			
-			request.setAttribute("flight", flightDetails);
-			
+//			String id = request.getParameter("id");		
+//			Flight flightDetails =new FlightService().findByFlightId(Integer.parseInt(id));
+//			
+//			request.setAttribute("flight", flightDetails);
+//			
 			RequestDispatcher rd = request.getRequestDispatcher("/edit_flight.jsp");
 			rd.forward(request, response);
 			

@@ -1,6 +1,8 @@
 package in.fssa.aviease.servlet.airline;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,12 +57,11 @@ public class UpdateAirlineServlet extends HttpServlet {
     	  
 		as.update(idInt, airline);
 		response.sendRedirect(request.getContextPath()+"/admin/airline/list");
-	} catch (ServiceException e) {
+	} catch (Exception e) {
 		e.printStackTrace();
-		throw new ServletException(e.getMessage());
-	} catch (ValidationException e) {
-		e.printStackTrace();
-		throw new ServletException(e.getMessage());
+		request.setAttribute("errorMessage", e.getMessage());
+        RequestDispatcher rd = request.getRequestDispatcher("/edit_airline.jsp?id="+id);
+		rd.forward(request, response);
 	}
 	}
 	

@@ -1,10 +1,12 @@
 package in.fssa.aviease.servlet.flight;
 
 import java.io.IOException;
+
 import java.sql.Time;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +64,7 @@ public class CreateFlightServlet extends HttpServlet {
 		    } catch (Exception e) {
 		        
 		        e.printStackTrace(); 
+		        
 		    }
 		   
 		  
@@ -75,7 +78,9 @@ public class CreateFlightServlet extends HttpServlet {
 		    } catch (Exception e) {
 		       
 		        e.printStackTrace();
-		        throw new ServletException(e.getMessage());
+		        request.setAttribute("errorMessage", e.getMessage());
+	            RequestDispatcher rd = request.getRequestDispatcher("/add_flight.jsp");
+				rd.forward(request, response);
 		    }
 	}
 

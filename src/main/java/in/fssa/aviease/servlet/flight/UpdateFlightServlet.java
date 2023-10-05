@@ -5,6 +5,7 @@ import java.sql.Time;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,16 +67,15 @@ public class UpdateFlightServlet extends HttpServlet {
 			    FlightService flightService = new FlightService();
 		        try {
 					flightService.updateFlight(flight.getId(), flight);
-				} catch (ServiceException e) {
+				    response.sendRedirect(request.getContextPath()+"/admin/flight/list");
+				} catch (Exception e) {
 					
 					e.printStackTrace();
-					throw new ServletException(e.getMessage());
-				} catch (ValidationException e) {
-					
-					e.printStackTrace();
-					throw new ServletException(e.getMessage());
+					request.setAttribute("errorMessage", e.getMessage());
+		            RequestDispatcher rd = request.getRequestDispatcher("/edit_flight.jsp?id="+id);
+					rd.forward(request, response);
 				}
-		        response.sendRedirect(request.getContextPath()+"/admin/flight/list");
+		    
 	        
 	}
 

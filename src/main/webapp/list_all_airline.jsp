@@ -7,6 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Airline List</title>
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
        
         .container {
@@ -78,18 +83,33 @@
     </style>
 </head>
 <body>
-<a href="/aviease-web/admin/list_all_user" class="back-button">Back</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand navti">Aviease Admin</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    <a class="nav-item nav-link" href="/aviease-web/admin/list_all_user">List All user</a>
+      <a class="nav-item nav-link" href="/aviease-web/admin/airline/list">List All Airlines</a>
+      <a class="nav-item nav-link" href="/aviease-web/admin/flight/list">List All Flights</a>
+    </div>
+  </div>
+</nav>
 
     <div class="container">
      <a href="new" class="create-button">Create New Airline</a>
         <h1>Airline List</h1>
-        <table>
+        <table id="myTable" class="display">
+          <thead>
             <tr>
                 <th>ID</th>
                 <th>Airline Name</th>
                 <th>Airline Code</th>
                 <th>Actions</th>
             </tr>
+              </thead>
             <%
             AirLineService airlineService = new AirLineService();
                 List<AirLine> airlineList = airlineService.findAll();
@@ -110,5 +130,13 @@
         </table>
        
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#myTable').DataTable();
+  });
+</script>
 </body>
 </html>

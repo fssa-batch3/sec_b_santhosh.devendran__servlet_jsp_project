@@ -1,3 +1,4 @@
+<%@page import="in.fssa.aviease.service.FlightService"%>
 <%@page import="in.fssa.aviease.model.Flight"%>
 <%@page import="in.fssa.aviease.model.AirLine"%>
 <%@page import="java.util.List"%>
@@ -110,12 +111,63 @@
         select:hover, select:focus {
             border-color: #007bff;
         }
+        
+          @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            50%{
+              opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .error-message {
+            background-color: #ff0000;
+            border-radius: 20px;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: none;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .error-message.show {
+            display: block;
+            animation-name: fadeIn;
+        }
+
+        .error-message.hide {
+            display: block;
+            animation-name: fadeOut;
+        }
+        
     </style>
 </head>
 <body>
 
 <% 
-Flight flight = (Flight) request.getAttribute("flight");
+String id = request.getParameter("id");		
+Flight flight =new FlightService().findByFlightId(Integer.parseInt(id));
 %>
     <a href="/aviease-web/admin/flight/list" class="back-button">Back</a>
 
@@ -276,5 +328,42 @@ Flight flight = (Flight) request.getAttribute("flight");
             </div>
         </form>
     </div>
+    
+     <div class="error-message" id="error-message">
+     
+     <script type="text/javascript">
+
+function showError(message, duration) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.innerHTML = message;
+    errorMessage.classList.add('show');
+
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+        errorMessage.classList.add('hide');
+
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+            errorMessage.classList.remove('hide');
+        }, 500); 
+    }, duration);
+}
+
+
+</script>
+	<div class="error-message" id="error-message"></div>
+
+	<%
+	String message = (String) request.getAttribute("errorMessage");
+	if (message != null) {
+		request.removeAttribute("errorMessage");
+
+	%>
+	<script>
+        showError("<%=message%>", 2000);
+	</script>
+	<%
+	}
+	%>
 </body>
 </html>

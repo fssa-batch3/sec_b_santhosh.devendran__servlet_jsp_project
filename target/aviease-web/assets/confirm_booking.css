@@ -1,0 +1,391 @@
+@charset "ISO-8859-1";
+
+*,*:before,*:after {
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 16px;
+  }
+  
+  .plane {
+    margin: 20px auto;
+    max-width: 700px;
+    margin-bottom: 0px;
+  }
+  
+.cockpit {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 5px solid #d8d8d8;
+}
+
+.cockpit:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 600px;
+    width: 100%;
+    border-radius: 50%;
+    border-right: 5px solid #d8d8d8;
+    border-left: 5px solid #d8d8d8;
+}
+
+h1 {
+    width: 60%;
+    margin: 100px auto 35px auto;
+}
+
+  
+  .pname{
+    font-weight: 800;
+    font-size: 30px;
+    color: #007bff;
+  }
+
+  .section{
+    width: 40%;
+  }
+  .flex{
+    display: flex;
+    flex-direction: row;
+  }
+  .over{
+    overflow-y: scroll;
+  }
+  
+  .flightbody{
+    width: 700px;
+    height: auto;
+    padding: 20px;
+    border: 5px solid #d8d8d8;
+    margin: 20px auto;
+    margin-top: 0px;
+  }
+
+.d-none{
+    display: none;
+}
+
+  /* scroll hide */
+
+  ::-webkit-scrollbar {
+    width: 0.5rem; /* Width of the scrollbar (adjust as needed) */
+}
+
+/* Track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Make the track background transparent */
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Make the thumb transparent */
+}
+
+/* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+/* seating arangement */
+
+.row1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.seatdiv{
+   margin-top: 20px;
+}
+.seat{
+    width: 35px;
+    height: 30px;
+    margin: 3px;
+    border: 1px solid #d8d8d8;
+    background-color: azure;
+}
+.selected{
+    background-color: rgb(90, 168, 251);
+}
+.booked{
+    background-color:tomato;
+    cursor: not-allowed; 
+    pointer-events: none; 
+    opacity: 0.6;
+}
+.ex{
+    margin-left: 20px;
+}
+
+/* details */
+
+.details{
+    width: 60%;
+    position: fixed;
+    right: 0px;
+}
+.container1 {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 70%;
+    height: 30%;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0; /* Remove margin from the top of the heading */
+}
+
+.user-info,
+.flight-info {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.info {
+    margin-top: 5px;
+}
+
+.status {
+    color: orange;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    display: block; 
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+.container1 {
+    text-align: center; 
+    font-size: 20px;
+    height: 37%;
+}
+
+.user-info, .flight-info {
+    border-top: 1px solid #ccc; 
+    padding-top: 15px; 
+    margin-top: 80px;
+}
+
+.flight-info .info {
+    margin-top: 10px; 
+}
+
+.paymentdiv{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    width: 106%;
+    height: 50%;
+    margin: auto;
+    margin-top: 10%;
+    margin-left: -3%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* paysucess */
+.paysucess{
+    width: 40%;
+}
+.paysucess img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+/* card */
+/* Style the form container */
+.paymentform {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+  
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Style the form labels */
+.paymentform label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style the form input fields */
+.paymentform input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the form button */
+.paymentbn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Style the form button on hover */
+.paymentbn:hover {
+    background-color: #0056b3;
+}
+.confirm{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer; 
+    margin: auto;
+    margin-top: 50%;
+}
+.confirmdiv{
+    width: 30%;
+}
+/* otp verification*/
+
+.height-100 {
+    height: 100vh
+}
+
+.card {
+    width: 400px;
+    border: none;
+    height: 300px;
+    box-shadow: 0px 5px 20px 0px #d2dae3;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.card h6 {
+    color: #007bff;
+    font-size: 20px
+}
+
+.inputs input {
+    width: 40px;
+    height: 40px
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0
+}
+
+.card-2 {
+    background-color: #fff;
+    padding: 10px;
+    width: 350px;
+    height: 100px;
+    bottom: -50px;
+    left: 20px;
+    position: absolute;
+    border-radius: 5px
+}
+
+.card-2 .content {
+    margin-top: 50px
+}
+
+.card-2 .content a {
+    color: #007bff;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid #007bff;
+}
+
+.validate {
+    border-radius: 20px;
+    height: 40px;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    width: 140px
+}
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+.popup-content {
+   
+    margin: 10% auto;
+    padding: 20px;
+  
+    width: 30%;
+    font-weight: bolder;
+}
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+.show {
+    display: block;
+}
+h1 {
+    color: green;
+}
+#closePopup{
+    border: 0px solid #ccc;
+    background-color: crimson;
+    color: #fff;
+    margin-top: 15px;;
+}
+
+.diablebn{
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}

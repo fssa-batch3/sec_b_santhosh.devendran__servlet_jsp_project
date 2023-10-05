@@ -14,6 +14,7 @@ import in.fssa.aviease.exception.ValidationException;
 import in.fssa.aviease.model.User;
 import in.fssa.aviease.model.UserEntity;
 import in.fssa.aviease.service.UserService;
+import in.fssa.aviease.util.PasswordUtil;
 
 /**
  * Servlet implementation class UserLoginServlet
@@ -27,29 +28,40 @@ public class UserLoginServlet extends HttpServlet {
 	    }
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        
 	        try {
 	            Long phoneNumber = Long.parseLong(request.getParameter("phone_number"));
 	            String password = request.getParameter("password");
+
 	            UserService userService = new UserService();
 	            User user = userService.findUserByMobileNo(phoneNumber);
+
 	            if (user == null) {
-	                System.out.println("User not found");
-	            } else if (!password.equals(user.getPassword())) {
-	                System.out.println("Incorrect Phone number or Password:(");
+	                String message = "User not found";
+	                request.setAttribute("errorMessage", message);
+	               
+	                RequestDispatcher rd = request.getRequestDispatcher("/pages/index.jsp");
+	    			rd.forward(request, response);
 	            } else {
-	                System.out.println("Login Successfull:)");
-	                int id = user.getId();
-	                request.getSession().setAttribute("userId", id); 
-	                response.sendRedirect(request.getContextPath() + "/flight/search");
+	                String decryptedPassword = PasswordUtil.passwordDecrypt(phoneNumber, user.getPassword());
+
+	                if (!password.equals(decryptedPassword)) {
+	                    String message = "Incorrect Phone number or Password:(";
+	                    request.setAttribute("errorMessage", message);
+	                    RequestDispatcher rd = request.getRequestDispatcher("/pages/index.jsp");
+	        			rd.forward(request, response);
+	                } else {
+	                    System.out.println("Login Successful:)");
+	                    int id = user.getId();
+	                    request.getSession().setAttribute("userId", id);
+	                    response.sendRedirect(request.getContextPath() + "/flight/search");
+	                }
 	            }
-	           
-	        } catch (ServiceException e) {
+	        } catch (Exception e) {
 	            e.printStackTrace();
-	            throw new ServletException(e.getMessage());
-	        } catch (ValidationException e) {
-	            e.printStackTrace();
-	            throw new ServletException(e.getMessage());
+	            request.setAttribute("errorMessage", e.getMessage());
+	            RequestDispatcher rd = request.getRequestDispatcher("/pages/index.jsp");
+				rd.forward(request, response);
 	        }
 	    }
+
 }

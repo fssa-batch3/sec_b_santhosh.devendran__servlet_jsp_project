@@ -1,3 +1,4 @@
+<%@page import="in.fssa.aviease.service.UserService"%>
 <%@page import="in.fssa.aviease.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Update User</title>
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -57,12 +59,64 @@
     button:hover {
         background-color: #0056b3;
     }
+    
+      @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            50%{
+              opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .error-message {
+            background-color: #ff0000;
+            border-radius: 20px;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: none;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .error-message.show {
+            display: block;
+            animation-name: fadeIn;
+        }
+
+        .error-message.hide {
+            display: block;
+            animation-name: fadeOut;
+        }
+    
 </style>
 </head>
 <body>
 
 <% 
-User user = (User) request.getAttribute("user");
+String id = request.getParameter("id");		
+User user =new UserService().findUserById(Integer.parseInt(id));
+
 %>
 
 <div>
@@ -76,10 +130,10 @@ User user = (User) request.getAttribute("user");
     	
     		<input type="hidden" name="id" value="<%= user.getId()%>">
 			<label for="firstName">First Name:</label> 
-			<input type="text" name="firstName" value="<%=user.getFirstname() %>" required>
+			<input type="text" name="firstName" pattern="[A-Za-z]{3,20}" value="<%=user.getFirstname() %>" required>
 				 
 			<label for="lastName">Last Name:</label>
-			<input type="text" name="lastName" value="<%=user.getLastname() %>" required> 
+			<input type="text" name="lastName" pattern="[A-Za-z]{1,10}" value="<%=user.getLastname() %>" required> 
 				
 			<label for="mobileNumber">Mobile Number:</label> 
 			<input type="tel" name="mobileNumber" value="<%=user.getMobileNo() %>" readonly>
@@ -94,6 +148,42 @@ User user = (User) request.getAttribute("user");
 			<button type="submit">update</button>
 		</form>
 </div>
+ <div class="error-message" id="error-message">
+ 
+ <script type="text/javascript">
+
+function showError(message, duration) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.innerHTML = message;
+    errorMessage.classList.add('show');
+
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+        errorMessage.classList.add('hide');
+
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+            errorMessage.classList.remove('hide');
+        }, 500); 
+    }, duration);
+}
+
+
+</script>
+	<div class="error-message" id="error-message"></div>
+
+	<%
+	String message = (String) request.getAttribute("errorMessage");
+	if (message != null) {
+		request.removeAttribute("errorMessage");
+
+	%>
+	<script>
+        showError("<%=message%>", 2000);
+	</script>
+	<%
+	}
+	%>
 
 </body>
 </html>

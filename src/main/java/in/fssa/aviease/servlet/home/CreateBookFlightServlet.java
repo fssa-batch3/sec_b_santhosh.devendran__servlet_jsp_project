@@ -38,7 +38,9 @@ public class CreateBookFlightServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		
 		String flightId=request.getParameter("flightId");
+		String seatNo=request.getParameter("seatNo");
 		
         String dateString = request.getParameter("date");
         LocalDate localDate = LocalDate.parse(dateString);
@@ -46,12 +48,14 @@ public class CreateBookFlightServlet extends HttpServlet {
         int userId = (Integer) request.getSession().getAttribute("userId");
       	
       	int flight=Integer.parseInt(flightId);
+      	int seat=Integer.parseInt(seatNo);
       
       	
       	Tickets ticket=new Tickets();
       	ticket.setFlightId(flight);
       	ticket.setUserId(userId);
       	ticket.setTravelDate(localDate);
+      	ticket.setSeat(seat);
       	
       	TicketsService ts=new TicketsService();
       	

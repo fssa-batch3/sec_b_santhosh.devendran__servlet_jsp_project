@@ -1,6 +1,8 @@
 package in.fssa.aviease.servlet.user;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,12 +54,12 @@ public class UpdateUserServlet extends HttpServlet {
 	    	  
 			us.updateUser(idInt, user);
 			response.sendRedirect(request.getContextPath()+"/admin/list_all_user");
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException(e.getMessage());
-		} catch (ValidationException e) {
-			e.printStackTrace();
-			throw new ServletException(e.getMessage());
+			request.setAttribute("errorMessage", e.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/edit_user.jsp");
+			rd.forward(request, response);
+			
 		}
 	}
 

@@ -1,0 +1,213 @@
+  /* scroll hide */
+
+  ::-webkit-scrollbar {
+    width: 0.5rem; /* Width of the scrollbar (adjust as needed) */
+}
+
+/* Track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Make the track background transparent */
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Make the thumb transparent */
+}
+
+/* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+body {
+    background-color: #f9f9fa
+}
+
+.padding {
+    padding: 3rem !important
+}
+
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: -webkit-gradient(linear, left top, right top, from(#2a97f6), to(#485df8));
+        background: linear-gradient(to right, #5a69ee, #63ccf2);
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+ 
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+p {
+    font-size: 14px;
+}
+}
+
+.card-block {
+    margin-top: 10%;
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.marauto{
+    margin: auto;
+}
+
+/* drop down*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px;
+    z-index: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+ 
+}
+
+.dropdown-content a {
+    text-decoration: none; 
+    color: #333;
+    font-size: 20px;
+    display: block;
+    padding: 10px 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+     background-color: rgb(143, 229, 244);
+    transition: background-color 0.3s ease;
+}
+.navulflex{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+.editicon{
+	width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 5;
+    left: 76rem;
+}

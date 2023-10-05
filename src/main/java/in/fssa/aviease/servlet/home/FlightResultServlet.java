@@ -1,10 +1,12 @@
 package in.fssa.aviease.servlet.home;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,7 +74,7 @@ FlightService flightService = new FlightService();
 	        requestBody.append(line);
 	    }
 
-	    // Parse the JSON data using Gson
+	    // Parse the JSON data using 
 	    Gson gson = new Gson();
 	    JsonObject requestData = JsonParser.parseString(requestBody.toString()).getAsJsonObject();
 	    
@@ -87,12 +89,11 @@ FlightService flightService = new FlightService();
 
 			flights = flightService.findAllFlightBySourcAndDestination(source, destination);
 
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (ValidationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 request.setAttribute("errorMessage", e.getMessage());
+	            RequestDispatcher rd = request.getRequestDispatcher("/pages/home.jsp");
+				rd.forward(request, response);
 		}
 
 		ResponseEntity responseEntity = new ResponseEntity(200, flights, "flights Retrieved Successfully :)");

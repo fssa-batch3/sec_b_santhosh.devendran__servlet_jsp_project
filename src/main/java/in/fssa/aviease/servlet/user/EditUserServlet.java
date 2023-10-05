@@ -32,13 +32,13 @@ public class EditUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = request.getParameter("id");		
+//		String id = request.getParameter("id");		
 
 		try {
 			
-			User userDetails =new UserService().findUserById(Integer.parseInt(id));
-			
-			request.setAttribute("user", userDetails);
+//			User userDetails =new UserService().findUserById(Integer.parseInt(id));
+//			
+//			request.setAttribute("user", userDetails);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/edit_user.jsp");
 			rd.forward(request, response);

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aviease Register</title>
     <link rel="stylesheet" href="../assets/register.css">
+    <link rel="stylesheet" href="../assets/error.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -36,7 +37,7 @@
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <div class="form-outline">
-                                                <input type="text" id="lastName" name="lastName" pattern="[A-Za-z]" class="form-control form-control-lg" required/>
+                                                <input type="text" id="lastName" name="lastName" pattern="[A-Za-z]{1,20}" class="form-control form-control-lg" required/>
                                                 <label class="form-label" for="form3Example1cg2">Last Name</label>
                                             </div>
                                         </div>
@@ -52,9 +53,9 @@
                                     </div>
 
                                     <div class="form-outline mb-2">
-                                        <input type="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password"
+                                        <input type="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password"
                                             class="form-control form-control-lg" required />
-                                        <label class="form-label" name="password" for="form3Example4cg">Password</label>
+                                        <label class="form-label"  for="form3Example4cg">Password</label>
                                     </div>
 
                   <!--                    <div class="form-outline mb-2">
@@ -89,6 +90,46 @@
             </div>
         </div>
     </section>
+    
+     <div class="error-message" id="error-message">
+  
+   </div>
 
+
+
+<script type="text/javascript">
+
+function showError(message, duration) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.innerHTML = message;
+    errorMessage.classList.add('show');
+
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+        errorMessage.classList.add('hide');
+
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+            errorMessage.classList.remove('hide');
+        }, 500); 
+    }, duration);
+}
+
+
+</script>
+	<div class="error-message" id="error-message"></div>
+
+	<%
+	String message = (String) request.getAttribute("errorMessage");
+	if (message != null) {
+		request.removeAttribute("errorMessage");
+
+	%>
+	<script>
+        showError("<%=message%>", 2000);
+	</script>
+	<%
+	}
+	%>
 </body>
 </html>

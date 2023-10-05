@@ -2,6 +2,7 @@ package in.fssa.aviease.servlet.flight;
 
 import java.io.BufferedReader;
 
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,11 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import in.fssa.aviease.exception.ServiceException;
-
+import in.fssa.aviease.model.LocalDateAdapter;
 import in.fssa.aviease.model.ResponseEntity;
 import in.fssa.aviease.model.Tickets;
 import in.fssa.aviease.service.TicketsService;
@@ -64,8 +66,9 @@ TicketsService ticketsService = new TicketsService();
 	    }
 
 	    Gson gson = new Gson();
-	    JsonObject requestData = JsonParser.parseString(requestBody.toString()).getAsJsonObject();
+	    JsonObject requestData =  JsonParser.parseString(requestBody.toString()).getAsJsonObject();
 	    
+	 
 	
 	    int flightId = requestData.get("flightId").getAsInt();
 	     String date = requestData.get("date").getAsString();
@@ -73,18 +76,19 @@ TicketsService ticketsService = new TicketsService();
 	     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 
 	         LocalDate formatDate = LocalDate.parse(date, dateFormatter);
-	        
+	        int count=0;
 
 		try {
-			System.out.println(flightId+" tic "+formatDate);
+			
 			tickets = ticketsService.findByFlightIdTravelDate(flightId, formatDate);
+			count = tickets.size();
 
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		ResponseEntity responseEntity = new ResponseEntity(200, tickets, "tickets Retrieved Successfully :)");
+		ResponseEntity responseEntity = new ResponseEntity(200, count, "tickets Retrieved Successfully :)");
 
 		
 		String reponseJson = gson.toJson(responseEntity);

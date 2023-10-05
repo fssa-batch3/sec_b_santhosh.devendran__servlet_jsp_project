@@ -34,14 +34,14 @@ public class EditAirlineServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    try {
-	        String id = request.getParameter("id");
-	        
-	        
-	        System.out.println("Request URL: " + request.getRequestURL().toString());
-	        System.out.println("ID Parameter: " + id);
-
-	        AirLine airline = new AirLineService().findById(Integer.parseInt(id));
-	        request.setAttribute("airline", airline);
+//	        String id = request.getParameter("id");
+//	        
+//	        
+//	        System.out.println("Request URL: " + request.getRequestURL().toString());
+//	        System.out.println("ID Parameter: " + id);
+//
+//	        AirLine airline = new AirLineService().findById(Integer.parseInt(id));
+//	        request.setAttribute("airline", airline);
 	        
 	        RequestDispatcher rd = request.getRequestDispatcher("/edit_airline.jsp");
 	        rd.forward(request, response);

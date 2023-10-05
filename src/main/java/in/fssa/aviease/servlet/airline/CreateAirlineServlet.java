@@ -1,6 +1,8 @@
 package in.fssa.aviease.servlet.airline;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,13 +44,13 @@ public class CreateAirlineServlet extends HttpServlet {
         
         try {
 			as.create(airline);
+			System.out.println("created sucessfully airline");
 			response.sendRedirect(request.getContextPath()+"/admin/airline/list");
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException(e.getMessage());
-		} catch (ValidationException e) {
-			e.printStackTrace();
-			throw new ServletException(e.getMessage());
+			request.setAttribute("errorMessage", e.getMessage());
+            RequestDispatcher rd = request.getRequestDispatcher("/add_airline.jsp");
+			rd.forward(request, response);
 		}
 	}
 

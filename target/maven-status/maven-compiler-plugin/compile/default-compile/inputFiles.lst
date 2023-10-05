@@ -7,6 +7,7 @@ C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\serv
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\flight\EditFlightServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\flight\UpdateFlightServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\FlightSearchServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\UpdateProfileServelet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\admin\ListAllUserServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\airline\EditAirlineServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\FlightResultServlet.java
@@ -14,13 +15,18 @@ C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\serv
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\airline\NewAirlineServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\GetUserById.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\admin\ListAllAirLineServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\TicketDetailsServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\model\LocalDateAdapter.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\AddUserServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\NewUserServlet.java
-C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\ViewUserDetails.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\UserLogoutServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\ViewUserProfile.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\UpdateUserServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\CancelTicketServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\UserCreateservlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\flight\CreateFlightServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\airline\UpdateAirlineServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\flight\TicketsBookedServelet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\user\EditUserServlet.java
 C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\flight\NewFlightServlet.java
+C:\software\Eclipse_IDE_workspace\aviease-web\src\main\java\in\fssa\aviease\servlet\home\TicketsListServlet.java
